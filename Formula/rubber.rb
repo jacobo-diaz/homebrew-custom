@@ -1,12 +1,11 @@
 class Rubber < Formula
   desc "Automated building of LaTeX documents"
   homepage "https://launchpad.net/rubber/"
-  url "https://launchpad.net/rubber/trunk/1.4/+download/rubber-1.4.tar.gz"
-  sha256 "824af6142a0e52804de2f80d571c0aade1d0297a7d359a5f1874acbb53c0f0b4"
+  url "https://launchpad.net/rubber/trunk/1.5.1/+download/rubber-1.5.1.tar.gz"
+  sha256 "37a843dc36a8aa256f9a66de130a031a0406346e663e1c257e45fd0a6eae0d9d"
 
   head "lp:rubber", :using => :bzr
 
-  depends_on :tex
   depends_on "texinfo"
 
   def install

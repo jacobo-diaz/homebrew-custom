@@ -16,7 +16,6 @@ class Pplatex < Formula
 
   depends_on "scons" => :build
   depends_on "pcre"
-  depends_on :tex
 
   def install
     scons "PCREPATH=#{Formula["pcre"].opt_prefix}"
