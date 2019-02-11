@@ -10,7 +10,7 @@ class Rubber < Formula
 
   def install
     # Disable building of PDF docs
-    system "python3", "setup.py", "build", "--pdf=False",
+    system "python3", "setup.py", "build", "--pdf=False", "--info=False", "--html=False",
                                  "install", "--prefix=#{prefix}",
                                             "--infodir=#{info}",
                                             "--mandir=#{man}"
