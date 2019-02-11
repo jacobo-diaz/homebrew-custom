@@ -1,4 +1,6 @@
 class Rubber < Formula
+  include Language::Python::Virtualenv
+
   desc "Automated building of LaTeX documents"
   homepage "https://launchpad.net/rubber/"
   url "https://launchpad.net/rubber/trunk/1.5.1/+download/rubber-1.5.1.tar.gz"
@@ -7,19 +9,23 @@ class Rubber < Formula
   head "lp:rubber", :using => :bzr
 
   depends_on "texinfo"
+  depends_on "python"
 
   def install
-    # Disable building of PDF docs
-    system "python3", "setup.py", "build", "--pdf=False", "--info=False", "--html=False",
-                                 "install", "--prefix=#{prefix}",
-                                            "--infodir=#{info}",
-                                            "--mandir=#{man}"
-
-    bin.env_script_all_files(
-      libexec/"bin",
-      :PYTHONPATH => lib/"python3.7/site-packages"
-    )
+    virtualenv_install_with_resources
   end
+  #def install
+    # Disable building of PDF docs
+   # system "python3", "setup.py", "build", "--pdf=False", "--info=False", "--html=False",
+   #                              "install", "--prefix=#{prefix}",
+   #                                         "--infodir=#{info}",
+   #                                         "--mandir=#{man}"
+
+    #bin.env_script_all_files(
+    #  libexec/"bin",
+    #  :PYTHONPATH => lib/"python3.7/site-packages"
+    #)
+  #end
 
  # test do
  #   assert_match version.to_s, shell_output("#{bin}/rubber --version")
