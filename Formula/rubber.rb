@@ -17,7 +17,7 @@ class Rubber < Formula
 
     bin.env_script_all_files(
       libexec/"bin",
-      :PYTHONPATH => lib/"python2.7/site-packages"
+      :PYTHONPATH => lib/"python3.7/site-packages"
     )
   end
 
