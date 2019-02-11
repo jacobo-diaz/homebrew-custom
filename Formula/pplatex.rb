@@ -14,7 +14,6 @@ class Pplatex < Formula
     end
   end
 
-  depends_on "scons" => :build
   depends_on "pcre"
 
   def install
