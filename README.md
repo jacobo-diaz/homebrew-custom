@@ -1,2 +1,2 @@
-# homebrew-tex
-Homebrew formulae for TeX
+# homebrew
+Homebrew formulae
