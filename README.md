@@ -1,2 +1,2 @@
-# homebrew
-Homebrew formulae
+# homebrew-custom
+Homebrew custom formulae
