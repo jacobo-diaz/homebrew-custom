@@ -8,26 +8,30 @@ class Rubber < Formula
 
   head "lp:rubber", :using => :bzr
 
-  depends_on "texinfo"
   depends_on "python"
 
   def install
-    virtualenv_install_with_resources
+
+    create_cfg
+    version = Language::Python.major_minor_version "python3"
+    ENV.prepend_create_path "PYTHONPATH", libexec/"lib/python#{version}/site-packages"
+    system "python3", "setup.py", "build", "install", "--prefix=#{libexec}", "--infodir=#{info}", "--mandir=#{man}"
+    bin.install Dir[libexec/"bin/*"]
+    bin.env_script_all_files(libexec/"bin", :PYTHONPATH => ENV["PYTHONPATH"])
+
   end
-  #def install
-    # Disable building of PDF docs
-   # system "python3", "setup.py", "build", "--pdf=False", "--info=False", "--html=False",
-   #                              "install", "--prefix=#{prefix}",
-   #                                         "--infodir=#{info}",
-   #                                         "--mandir=#{man}"
 
-    #bin.env_script_all_files(
-    #  libexec/"bin",
-    #  :PYTHONPATH => lib/"python3.7/site-packages"
-    #)
-  #end
+  private def create_cfg
+    cfg_file = '[build]
+                man = 1
+                html = 0
+                pdf = 0
+                info = 0
+                txt = 0'
+    File.write('setup.cfg', cfg_file)
+  end
 
- # test do
- #   assert_match version.to_s, shell_output("#{bin}/rubber --version")
- # end
+  test do
+   assert_match version.to_s, shell_output("#{bin}/rubber --version")
+  end
 end
