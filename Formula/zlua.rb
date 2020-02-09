@@ -1,7 +1,7 @@
 class Zlua < Formula
   desc "A new cd command that helps you navigate faster by learning your habits"
   homepage "https://github.com/skywind3000/z.lua"
-  version "1.7.4"
+  version "1.8.2"
   url "https://github.com/skywind3000/z.lua/archive/v#{version}.tar.gz"
 
   def install
