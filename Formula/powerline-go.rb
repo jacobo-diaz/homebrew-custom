@@ -3,6 +3,7 @@ class PowerlineGo < Formula
   homepage "https://github.com/justjanne/powerline-go"
   version "1.17.0"
   url "https://github.com/jacobo-diaz/powerline-go/releases/download/v#{version}/powerline-go"
+  sha256 "4558ffa492f5dca279b6a77c5b8e565ed2d27f41ca9e2c1a4beecd43466bfceb"
 
   def install
     bin.install "powerline-go" => "powerline-go"
